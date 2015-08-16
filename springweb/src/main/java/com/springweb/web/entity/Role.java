@@ -5,12 +5,14 @@ import javax.persistence.Entity;
 
 import java.util.Set;
 
+import javax.persistence.GenerationType;
 import javax.persistence.OneToMany;
 import javax.persistence.CascadeType;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
 @Entity
@@ -20,8 +22,9 @@ public class Role implements java.io.Serializable{
 		private static final long serialVersionUID = 1L;
 	
 	 	@Id
-	    @GeneratedValue
-	 	@Column(name="ID", unique=true, nullable=false, precision=22, scale=0)
+	    @SequenceGenerator(name = "IDROLES_SEQ_GENERADOR",allocationSize = 1, sequenceName = "IDROLES_SEQ")
+		@GeneratedValue (strategy = GenerationType.SEQUENCE, generator = "IDROLES_SEQ_GENERADOR")
+	 	@Column(name="ID", unique=true, nullable=false, precision=22, scale=0)	
 	    private Integer id;
 	     
 	    @Column(name="DESCRIPTION")

@@ -3,11 +3,13 @@ package com.springweb.web.entity;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.CascadeType;
+import javax.persistence.GenerationType;
 import javax.persistence.JoinTable;
 import javax.persistence.JoinColumn;
 import javax.persistence.OneToOne;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
 @Entity
@@ -15,10 +17,11 @@ import javax.persistence.Table;
 public class User implements java.io.Serializable{
 	
 		private static final long serialVersionUID = 1L;
-	
+
 	 	@Id 
-	    @GeneratedValue
-	 	@Column(name="ID", unique=true, nullable=false, precision=22, scale=0)	 	
+	    @SequenceGenerator(name = "IDUSERS_SEQ_GENERADOR",allocationSize = 1, sequenceName = "IDUSERS_SEQ")
+		@GeneratedValue (strategy = GenerationType.SEQUENCE, generator = "IDUSERS_SEQ_GENERADOR")
+	 	@Column(name="ID", unique=true, nullable=false, precision=22, scale=0)		 	
 	    private Integer id;
 	     
 	    @Column(name="NAME")
