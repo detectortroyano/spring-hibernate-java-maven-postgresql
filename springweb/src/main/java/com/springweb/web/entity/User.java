@@ -13,12 +13,13 @@ import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
 @Entity
-@Table(name="USERS")
+@Table(name="USUARIOS")
 public class User implements java.io.Serializable{
 	
 		private static final long serialVersionUID = 1L;
 
 	 	@Id 
+	 	//@GeneratedValue
 	    @SequenceGenerator(name = "IDUSERS_SEQ_GENERADOR",allocationSize = 1, sequenceName = "IDUSERS_SEQ")
 		@GeneratedValue (strategy = GenerationType.SEQUENCE, generator = "IDUSERS_SEQ_GENERADOR")
 	 	@Column(name="ID", unique=true, nullable=false, precision=22, scale=0)		 	

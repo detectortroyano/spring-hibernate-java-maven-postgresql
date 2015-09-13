@@ -20,7 +20,7 @@
 	<context:component-scan base-package="com.springweb.web" />
     	
 	<bean id="propertyConfigurer" class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer"
-		p:location="/WEB-INF/config/db/jdbc.postgres.properties" />  	
+		p:location="/WEB-INF/config/db/jdbc.postgres.local.properties" />  	
     	
 	<!-- Default not dynamic database data. -->
 	<bean id="notDynamicDataSource" class="org.apache.commons.dbcp.BasicDataSource" destroy-method="close"
@@ -58,12 +58,14 @@
 		</property>
 		<property name="configurationClass">
 			<value>org.hibernate.cfg.AnnotationConfiguration</value>
-		</property>
+		</property>	
 		<property name="hibernateProperties">
 			<props>
 				<!-- mysql -->
 				<prop key="hibernate.dialect">${jdbc.dialect}</prop>
 				<prop key="hibernate.show_sql">false</prop>
+				<prop key="hibernate.format_sql">false</prop>
+				<prop key="hibernate.default_schema">PUBLIC</prop>
 			</props>
 		</property>
 	</bean>

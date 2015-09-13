@@ -22,6 +22,7 @@ public class Role implements java.io.Serializable{
 		private static final long serialVersionUID = 1L;
 	
 	 	@Id
+	 	//@GeneratedValue
 	    @SequenceGenerator(name = "IDROLES_SEQ_GENERADOR",allocationSize = 1, sequenceName = "IDROLES_SEQ")
 		@GeneratedValue (strategy = GenerationType.SEQUENCE, generator = "IDROLES_SEQ_GENERADOR")
 	 	@Column(name="ID", unique=true, nullable=false, precision=22, scale=0)	
