@@ -1,0 +1,56 @@
+﻿-- Database: "DBSpringWeb"
+
+-- DROP DATABASE "DBSpringWeb";
+
+CREATE DATABASE "DBSpringWeb"
+  WITH OWNER = postgres
+       ENCODING = 'UTF8'
+       TABLESPACE = pg_default
+       LC_COLLATE = 'Spanish_Spain.1252'
+       LC_CTYPE = 'Spanish_Spain.1252'
+       CONNECTION LIMIT = -1;
+       
+--drop table ROLES;
+CREATE TABLE ROLES (
+  ID int NOT NULL,
+  DESCRIPTION varchar(25) NOT NULL,
+  PRIMARY KEY (ID)
+);
+INSERT INTO ROLES VALUES ('1', 'ROLE_ADMIN');
+INSERT INTO ROLES VALUES ('2', 'ROLE_USER');
+--drop table USERS;
+CREATE TABLE USERS (
+  ID int NOT NULL,
+  NAME varchar(255) NOT NULL,
+  PASSWORD varchar(255) NOT NULL,
+  USERKEY varchar(15)  NULL,
+  EMAIL varchar(255) NOT NULL,
+  PRIMARY KEY (ID)
+) ;
+
+INSERT INTO USERS VALUES ('1', 'angelricardo.uthh@gmail.com', '$2a$10$UTpjhhu3sdgTRamgPrcHoeO2zzPLDKhGqtYNdbV4J7YR7Xq/nABLG', NULL, 'angelricardo.uthh@gmail.com');
+INSERT INTO USERS VALUES ('2', 'angelricardo.uthh2@gmail.com', '$2a$10$UTpjhhu3sdgTRamgPrcHoeO2zzPLDKhGqtYNdbV4J7YR7Xq/nABLG', NULL, 'hectorsaenz7@gmail.com');
+--SELECT * FROM USERS
+--DROP TABLE USERROLES;
+CREATE TABLE USERROLES (
+  IDROLE int NOT NULL,
+  IDUSER int NOT NULL,
+  PRIMARY KEY (IDROLE, IDUSER),
+  UNIQUE (IDUSER)
+) ;
+--select * FROM USERROLES;
+INSERT INTO USERROLES VALUES ('1', '1');
+INSERT INTO USERROLES VALUES ('2', '2');
+
+
+
+   CREATE SEQUENCE  IDUSERS_SEQ
+   INCREMENT BY 1 
+   START WITH 1
+   CACHE 20 ;
+
+   CREATE SEQUENCE  IDROLES_SEQ
+   INCREMENT BY 1 
+   START WITH 1
+   CACHE 20 ;   
+
